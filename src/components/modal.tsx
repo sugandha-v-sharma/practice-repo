@@ -4,7 +4,7 @@ interface ModalProps {
   emi: string | null;
   totalPayment: string | null;
   totalInterest: string | null;
-}
+} 
 
 function Modal({ emi, totalPayment, totalInterest }: ModalProps) {
   return (
