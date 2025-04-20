@@ -105,9 +105,10 @@ function Users() {
   return (
     <div className="p-6">
       {loading ? (
-        <div>Loading...</div>
+        <div className="text-center">Loading...</div>
       ) : (
         <>
+        <div className="text-center font-bold text-lg p-4">User Data</div>
           <input
             name="searchBox"
             aria-label="searchBox" //It is an accessibility attribute used to give a label to an element 
