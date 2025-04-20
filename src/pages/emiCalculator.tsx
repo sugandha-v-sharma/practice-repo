@@ -12,9 +12,9 @@ function EmiCalculator() {
     useState<boolean>(false);
 
   const calculateEMI = (): void => {
-    const principalLoanAmount:number = parseFloat(principal);
-    const annualInterest:number = parseFloat(annualRate);
-    const tenure:number = parseFloat(tenureYears);
+    const principalLoanAmount: number = parseFloat(principal);
+    const annualInterest: number = parseFloat(annualRate);
+    const tenure: number = parseFloat(tenureYears);
 
     if (isNaN(principalLoanAmount) || isNaN(annualInterest) || isNaN(tenure)) {
       setIsModalEmiResultModal(false);
@@ -22,12 +22,16 @@ function EmiCalculator() {
       return;
     } else {
       setIsModalEmiResultModal(true);
-      const monthlyInterestRate:number = annualInterest / 12 / 100;
-      const loanTenureInMonths:number = tenure * 12;
+      const monthlyInterestRate: number = annualInterest / 12 / 100;
+      const loanTenureInMonths: number = tenure * 12;
 
-      const totalEmi:number = (principalLoanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, loanTenureInMonths)) / (Math.pow(1 + monthlyInterestRate, loanTenureInMonths) - 1);
-      const totalPayment:number = totalEmi * loanTenureInMonths;
-      const interest:number = totalPayment - principalLoanAmount;
+      const totalEmi: number =
+        (principalLoanAmount *
+          monthlyInterestRate *
+          Math.pow(1 + monthlyInterestRate, loanTenureInMonths)) /
+        (Math.pow(1 + monthlyInterestRate, loanTenureInMonths) - 1);
+      const totalPayment: number = totalEmi * loanTenureInMonths;
+      const interest: number = totalPayment - principalLoanAmount;
 
       setEmi(totalEmi.toFixed(2));
       setTotalPayment(totalPayment.toFixed(2));
@@ -35,19 +39,23 @@ function EmiCalculator() {
     }
   };
 
-  const resetEMI = ():void =>{
-    setIsModalEmiResultModal(false)
-    setPrincipal("")
-    setAnnualRate("")
-    setTenureYears("")
-  }
+  const resetEMI = (): void => {
+    setIsModalEmiResultModal(false);
+    setPrincipal("");
+    setAnnualRate("");
+    setTenureYears("");
+  };
 
   return (
     <div className="w-full bg-grey-500 text-center">
-      <h2 className="uppercase font-bold text-lg p-4">EMI Calculator</h2>
+      <h2 className=" font-bold text-lg p-4">EMI Calculator</h2>
       <div className="p-4 flex">
-        <label className="w-1/2 text-right pr-4">Loan Amount (₹):</label>
+        <label className="w-1/2 text-right pr-4" htmlFor="loanAmount">
+          Loan Amount (₹):
+        </label>
         <input
+          aria-label="loanAmount"
+          id="loanAmount"
           className="w-1/6 border"
           type="number"
           value={principal}
@@ -55,10 +63,12 @@ function EmiCalculator() {
         />
       </div>
       <div className="p-4 flex">
-        <label className="w-1/2 text-right pr-4">
+        <label className="w-1/2 text-right pr-4" htmlFor="annualInterestRate">
           Annual Interest Rate (%):{" "}
         </label>
         <input
+        aria-label="annualInterestRate"
+          id="annualInterestRate"
           className="w-1/6 border"
           type="number"
           value={annualRate}
@@ -66,8 +76,12 @@ function EmiCalculator() {
         />
       </div>
       <div className="p-4 flex">
-        <label className="w-1/2 text-right pr-4">Tenure (Years): </label>
+        <label className="w-1/2 text-right pr-4" htmlFor="tenureYears">
+          Tenure (Years):{" "}
+        </label>
         <input
+        aria-label="tenureYears"
+          id="tenureYears"
           className="w-1/6 border"
           type="number"
           value={tenureYears}

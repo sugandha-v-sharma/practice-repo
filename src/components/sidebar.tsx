@@ -9,9 +9,9 @@ function Sidebar() {
                         EMI Calculator
                     </li>
                 </a>
-                <a href="/bankingPage">
+                <a href="/users">
                     <li className='p-3'>
-                        Banking Page
+                        Users
                     </li>
                 </a>
             </ul>

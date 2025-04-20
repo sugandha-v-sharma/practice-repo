@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import EmiCalculator from "./pages/emiCalculator";
 import ErrorPage from "./pages/errorPage";
 import Layout from "./pages/layout";
-import BankingPage from "./pages/bankingPage";
+import Users from "./pages/users";
 
 const router = createBrowserRouter([
   {
@@ -17,8 +17,8 @@ const router = createBrowserRouter([
         element: <EmiCalculator />,
       },
       {
-        path: "bankingPage",
-        element: <BankingPage />,
+        path: "users",
+        element: <Users />,
       },
     ],
   },
