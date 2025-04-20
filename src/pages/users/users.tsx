@@ -114,14 +114,14 @@ function Users() {
             aria-label="searchBox" //It is an accessibility attribute used to give a label to an element 
             placeholder="Search"
             type="text"
-            className="w-1/6 border p-2"
+            className="w-1/6 border p-1"
             onChange={(e) => {
               setSearchItem(e?.target?.value);
             }}
           />&nbsp;&nbsp;&nbsp;
           <button
           type="button"
-            className="bg-blue-500 hover:bg-blue-900 p-2 rounded text-white mt-4"
+            className="bg-blue-500 hover:bg-blue-900 p-1 rounded text-white mt-4"
             onClick={() => {
               getSearchedItem();
             }}
@@ -130,7 +130,7 @@ function Users() {
           </button>&nbsp;&nbsp;&nbsp;
           <button
             type="button"
-            className="bg-blue-500 hover:bg-blue-900 p-2 rounded text-white mt-4"
+            className="bg-blue-500 hover:bg-blue-900 p-1 rounded text-white mt-4"
             onClick={() => {
               resetItem();
             }}

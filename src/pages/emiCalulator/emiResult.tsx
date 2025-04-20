@@ -1,12 +1,12 @@
 import React from "react";
 
-interface ModalProps {
+interface EMIResultProps {
   emi: string | null;
   totalPayment: string | null;
   totalInterest: string | null;
 } 
 
-function Modal({ emi, totalPayment, totalInterest }: ModalProps) {
+function Result({ emi, totalPayment, totalInterest }: EMIResultProps) {
   return (
     <div className="text-center mt-4">
       <hr/>
@@ -27,4 +27,4 @@ function Modal({ emi, totalPayment, totalInterest }: ModalProps) {
   );
 }
 
-export default Modal;
+export default Result;

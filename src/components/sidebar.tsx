@@ -14,6 +14,11 @@ function Sidebar() {
                         Users
                     </li>
                 </a>
+                <a href="/todoList">
+                    <li className='p-3'>
+                        ToDo List
+                    </li>
+                </a>
             </ul>
         </>
     )

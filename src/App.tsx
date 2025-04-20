@@ -5,6 +5,7 @@ import EmiCalculator from "./pages/emiCalulator/emiCalculator";
 import ErrorPage from "./pages/errorPage";
 import Layout from "./pages/layout";
 import Users from "./pages/users/users";
+import ToDoList from "./pages/toDoList/toDoList";
 
 const router = createBrowserRouter([
   {
@@ -21,8 +22,8 @@ const router = createBrowserRouter([
         element: <Users />,
       },
       {
-        path: "users",
-        element: <Users />,
+        path: "todoList",
+        element: <ToDoList />,
       },
     ],
   },

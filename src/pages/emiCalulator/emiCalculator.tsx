@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Modal from "../../components/modal";
+import EMIResult from "./emiResult";
 
 function EmiCalculator() {
   const [principal, setPrincipal] = useState<string>("");
@@ -8,7 +8,7 @@ function EmiCalculator() {
   const [emi, setEmi] = useState<string | null>(null);
   const [totalPayment, setTotalPayment] = useState<string | null>(null);
   const [totalInterest, setTotalInterest] = useState<string | null>(null);
-  const [isOpenEmiResultModal, setIsModalEmiResultModal] =
+  const [isOpenEmiResultComponent, setIsModalEmiResultComponent] =
     useState<boolean>(false);
 
   const calculateEMI = (): void => {
@@ -17,11 +17,11 @@ function EmiCalculator() {
     const tenure: number = parseFloat(tenureYears);
 
     if (isNaN(principalLoanAmount) || isNaN(annualInterest) || isNaN(tenure)) {
-      setIsModalEmiResultModal(false);
+      setIsModalEmiResultComponent(false);
       alert("Please enter valid numbers for all fields.");
       return;
     } else {
-      setIsModalEmiResultModal(true);
+      setIsModalEmiResultComponent(true);
       const monthlyInterestRate: number = annualInterest / 12 / 100;
       const loanTenureInMonths: number = tenure * 12;
 
@@ -40,7 +40,7 @@ function EmiCalculator() {
   };
 
   const resetEMI = (): void => {
-    setIsModalEmiResultModal(false);
+    setIsModalEmiResultComponent(false);
     setPrincipal("");
     setAnnualRate("");
     setTenureYears("");
@@ -56,7 +56,7 @@ function EmiCalculator() {
         <input
           aria-label="loanAmount"
           id="loanAmount"
-          className="w-1/6 border"
+          className="w-1/6 border p-1"
           type="number"
           value={principal}
           onChange={(e) => setPrincipal(e.target.value)}
@@ -69,7 +69,7 @@ function EmiCalculator() {
         <input
         aria-label="annualInterestRate"
           id="annualInterestRate"
-          className="w-1/6 border"
+          className="w-1/6 border p-1"
           type="number"
           value={annualRate}
           onChange={(e) => setAnnualRate(e.target.value)}
@@ -82,7 +82,7 @@ function EmiCalculator() {
         <input
         aria-label="tenureYears"
           id="tenureYears"
-          className="w-1/6 border"
+          className="w-1/6 border p-1"
           type="number"
           value={tenureYears}
           onChange={(e) => setTenureYears(e.target.value)}
@@ -90,21 +90,21 @@ function EmiCalculator() {
       </div>
       <div>
         <button
-          className="bg-blue-500 hover:bg-blue-900 p-2 rounded text-white mt-4"
+          className="bg-blue-500 hover:bg-blue-900 p-1  rounded text-white mt-4"
           onClick={calculateEMI}
         >
           Calculate EMI
         </button>
         &nbsp;&nbsp;
         <button
-          className="bg-blue-500 hover:bg-blue-900 p-2 rounded text-white mt-4"
+          className="bg-blue-500 hover:bg-blue-900 p-1 rounded text-white mt-4"
           onClick={resetEMI}
         >
           Reset EMI
         </button>
       </div>
-      {isOpenEmiResultModal && (
-        <Modal
+      {isOpenEmiResultComponent && (
+        <EMIResult
           emi={emi}
           totalPayment={totalPayment}
           totalInterest={totalInterest}
