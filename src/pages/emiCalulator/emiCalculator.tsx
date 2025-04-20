@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Modal from "../components/modal";
+import Modal from "../../components/modal";
 
 function EmiCalculator() {
   const [principal, setPrincipal] = useState<string>("");
