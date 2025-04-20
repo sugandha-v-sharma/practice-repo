@@ -6,6 +6,8 @@ import ErrorPage from "./pages/errorPage";
 import Layout from "./pages/layout";
 import Users from "./pages/users/users";
 import ToDoList from "./pages/toDoList/toDoList";
+import Counter from "./pages/counter/counter";
+import UserData from "./pages/userData/userData"
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: "todoList",
         element: <ToDoList />,
+      },
+      {
+        path: "counter",
+        element: <Counter />,
+      },
+      {
+        path: "userData",
+        element: <UserData />,
       },
     ],
   },

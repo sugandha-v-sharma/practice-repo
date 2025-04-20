@@ -19,6 +19,16 @@ function Sidebar() {
                         ToDo List
                     </li>
                 </a>
+                <a href="/counter">
+                    <li className='p-3'>
+                        Counter
+                    </li>
+                </a>
+                <a href="/userData">
+                    <li className='p-3'>
+                        User Data
+                    </li>
+                </a>
             </ul>
         </>
     )
