@@ -7,7 +7,9 @@ import Layout from "./pages/layout";
 import Users from "./pages/users/users";
 import ToDoList from "./pages/toDoList/toDoList";
 import Counter from "./pages/counter/counter";
-import UserData from "./pages/userData/userData"
+import UserData from "./pages/userData/userData";
+import {Toaster} from "../src/components/ui/toaster";
+import { ToastProvider } from "../src/components/ui/use-toast"
 
 const router = createBrowserRouter([
   {
@@ -40,7 +42,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (<ToastProvider><RouterProvider router={router} /><Toaster /></ToastProvider>);
 }
 
 export default App;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "./ui/button";
-import { ModalInput } from "./ui/input";
+import { Input } from "./ui/input";
+import { useToast } from "./ui/use-toast"
 
 interface ModalProps {
   setIsOpenAddTaskModal: any;
@@ -16,10 +17,15 @@ function ToDoListModal({
   const [projectName, setProjectName] = useState<string>("");
   const [task, setTask] = useState<string>("");
   const [taskAssigner, setTaskAssigner] = useState<string>("");
+  const { toast } = useToast()
 
   const addTask = (): any => {
     if (task == "" || taskAssigner == "" || projectName == "") {
-      alert("Please fill all the mandatory fields");
+      toast({
+        title: "Alert!",
+        description: "Please fill all the mandatory fields",
+        variant : "alert"
+      })
     } else {
       let newTask = {
         task: task,
@@ -28,7 +34,11 @@ function ToDoListModal({
       };
       setTaskList([...taskList, newTask]);
       setIsOpenAddTaskModal(false);
-      alert("Task has been added");
+      toast({
+        title: "Success!",
+        description: "Task added successfully",
+        variant : "success"
+      })
     }
   };
 
@@ -46,7 +56,8 @@ function ToDoListModal({
           <label className="w-1/2 text-right pr-4" htmlFor="projectName">
             Project Name<span className="text-red-500">*</span>
           </label>
-          <ModalInput
+          <Input
+          variant="modal"
             aria-label="projectName"
             id="projectName"
             // className="w-1/2 border p-1"
@@ -60,7 +71,8 @@ function ToDoListModal({
           <label className="w-1/2 text-right pr-4" htmlFor="taskName">
             Task<span className="text-red-500">*</span>
           </label>
-          <ModalInput
+          <Input
+          variant="modal"
             aria-label="taskName"
             id="taskName"
             // className="w-1/2 border p-1"
@@ -74,7 +86,8 @@ function ToDoListModal({
           <label className="w-1/2 text-right pr-4" htmlFor="assigner">
             Assigner<span className="text-red-500">*</span>
           </label>
-          <ModalInput
+          <Input
+          variant="modal"
             aria-label="assigner"
             id="assigner"
             // className="w-1/2 border p-1"

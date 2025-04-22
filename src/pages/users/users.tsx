@@ -1,6 +1,7 @@
 import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
 import React, { useEffect, useState } from "react";
+import { useToast } from "../../components/ui/use-toast"
 
 function Users() {
   type User = {
@@ -14,6 +15,7 @@ function Users() {
   const [userList, setUserList] = useState<User[]>([]);
   const [searchItem, setSearchItem] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+    const { toast } = useToast()
 
   const getUserData = (): void => {
     setLoading(true);
@@ -91,7 +93,11 @@ function Users() {
         item?.email?.toLowerCase() === searchItem?.toLowerCase()
     );
     if (filtered.length === 0) {
-      alert("Data is not available");
+      toast({
+        title: "Error!",
+        description: "data not available",
+        variant : "error"
+      })
       getUserData();
     } else {
       setUserList(filtered);

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import EMIResult from "./emiResult";
 import { Button } from "../../components/ui/button";
-import { Input } from "../../components/ui/input"
+import { Input } from "../../components/ui/input";
+import { useToast } from "../../components/ui/use-toast"
 
 
 function EmiCalculator() {
+  const { toast } = useToast()
   const [principal, setPrincipal] = useState<string>("");
   const [annualRate, setAnnualRate] = useState<string>("");
   const [tenureYears, setTenureYears] = useState<string>("");
@@ -21,7 +23,11 @@ function EmiCalculator() {
 
     if (isNaN(principalLoanAmount) || isNaN(annualInterest) || isNaN(tenure)) {
       setIsModalEmiResultComponent(false);
-      alert("Please enter valid numbers for all fields.");
+      toast({
+        title: "Alert!",
+        description: "Please enter valid numbers for all fields",
+        variant : "alert"
+      })
       return;
     } else {
       setIsModalEmiResultComponent(true);
@@ -35,14 +41,22 @@ function EmiCalculator() {
         (Math.pow(1 + monthlyInterestRate, loanTenureInMonths) - 1);
       const totalPayment: number = totalEmi * loanTenureInMonths;
       const interest: number = totalPayment - principalLoanAmount;
-
       setEmi(totalEmi.toFixed(2));
       setTotalPayment(totalPayment.toFixed(2));
       setTotalInterest(interest.toFixed(2));
+      toast({
+        title: "Success!",
+        description: "EMI Calculated",
+        variant : "success"
+      })
     }
   };
 
   const resetEMI = (): void => {
+    toast({
+      title: "Done!",
+      description: "Fields cleared",
+    })
     setIsModalEmiResultComponent(false);
     setPrincipal("");
     setAnnualRate("");

@@ -5,6 +5,7 @@
   "dependencies": {
     "@fontsource/inter": "^5.2.5",
     "@radix-ui/react-slot": "^1.2.0",
+    "@radix-ui/react-toast": "^1.2.11",
     "@reduxjs/toolkit": "^2.7.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/user-event": "^13.5.0",

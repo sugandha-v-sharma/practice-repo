@@ -1,0 +1,12 @@
+{
+  "name": "practice-repo",
+  "projectType": "react",
+  "components": "src/components",
+  "utils": "src/lib/utils.ts",
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/index.css",
+    "baseColor": "zinc",
+    "radius": "md"
+  }
+}
