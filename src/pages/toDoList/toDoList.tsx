@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { LIST_OF_TASKS } from "../../utils/constants";
 import TodoListModal from "../../components/todoListModal";
+import { Button } from "../../components/ui/button";
+import { Input } from "../../components/ui/input";
 
 function ToDoList() {
   type List = {
@@ -20,6 +22,8 @@ function ToDoList() {
 
   const taskCompletion = (id: number): void => {
     const updatedList = taskList?.map((item: List, key: number) => {
+      console.log("id", id)
+      console.log("item", item)
       if (item?.id == id) {
         return {
           ...item,
@@ -42,7 +46,7 @@ function ToDoList() {
         className="flex items-start border p-4 m-2 rounded shadow mt-4"
       >
         <div className="flex-1 flex">
-          <input
+        <input
             type="checkbox"
             checked={item?.isTaskCompleted}
             onChange={() => {
@@ -61,15 +65,15 @@ function ToDoList() {
             </div>
           </div>
         </div>
-
-        <button
-          className="bg-red-500 hover:bg-red-700 px-3 py-1 rounded text-white"
+        <Button
+          shape="rounded"
+          variant="cancel"
           onClick={() => {
             removeItem(item?.id);
           }}
         >
           Remove
-        </button>
+        </Button>
       </div>
     ));
   };
@@ -77,14 +81,16 @@ function ToDoList() {
   return (
     <div className="overflow-x-auto max-w-full max-h-[600px] overflow-y-auto">
       <div className="text-center font-bold text-lg p-4">To-do List</div>
-      <button
-        className="bg-blue-500 hover:bg-blue-900 p-1 rounded text-white mt-4 m-2"
+      <Button
+        shape="rounded"
+        variant="hover"
         onClick={() => {
           setIsOpenAddTaskModal(true);
         }}
+        className="ml-2"
       >
         Add a Task
-      </button>
+      </Button>
       {getTaskList()}
       {isOpenAddTaskModal && (
         <TodoListModal

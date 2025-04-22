@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Button } from "./ui/button";
+import { ModalInput } from "./ui/input";
 
 interface ModalProps {
   setIsOpenAddTaskModal: any;
@@ -44,10 +46,10 @@ function ToDoListModal({
           <label className="w-1/2 text-right pr-4" htmlFor="projectName">
             Project Name<span className="text-red-500">*</span>
           </label>
-          <input
+          <ModalInput
             aria-label="projectName"
             id="projectName"
-            className="w-1/2 border p-1"
+            // className="w-1/2 border p-1"
             onChange={(e) => {
               setProjectName(e.target.value);
             }}
@@ -58,10 +60,10 @@ function ToDoListModal({
           <label className="w-1/2 text-right pr-4" htmlFor="taskName">
             Task<span className="text-red-500">*</span>
           </label>
-          <input
+          <ModalInput
             aria-label="taskName"
             id="taskName"
-            className="w-1/2 border p-1"
+            // className="w-1/2 border p-1"
             onChange={(e) => {
               setTask(e.target.value);
             }}
@@ -72,10 +74,10 @@ function ToDoListModal({
           <label className="w-1/2 text-right pr-4" htmlFor="assigner">
             Assigner<span className="text-red-500">*</span>
           </label>
-          <input
+          <ModalInput
             aria-label="assigner"
             id="assigner"
-            className="w-1/2 border p-1"
+            // className="w-1/2 border p-1"
             onChange={(e) => {
               setTaskAssigner(e.target.value);
             }}
@@ -83,23 +85,25 @@ function ToDoListModal({
           />
         </div>
         <div className="text-center">
-          <button
-            className="bg-blue-500 hover:bg-blue-900 p-1 rounded text-white mt-4"
+          <Button
+            shape="rounded"
+        variant="hover"
             onClick={() => {
               addTask();
             }}
           >
             Add
-          </button>
+          </Button>
           &nbsp;&nbsp;
-          <button
-            className="bg-blue-500 hover:bg-blue-900 p-1 rounded text-white mt-4"
+          <Button
+            shape="rounded"
+        variant="hover"
             onClick={() => {
               reset();
             }}
           >
             Reset
-          </button>
+          </Button>
         </div>
 
         <button

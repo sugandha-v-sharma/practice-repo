@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import EMIResult from "./emiResult";
+import { Button } from "../../components/ui/button";
+import { Input } from "../../components/ui/input"
+
 
 function EmiCalculator() {
   const [principal, setPrincipal] = useState<string>("");
@@ -53,10 +56,10 @@ function EmiCalculator() {
         <label className="w-1/2 text-right pr-4" htmlFor="loanAmount">
           Loan Amount (₹):
         </label>
-        <input
+        <Input
           aria-label="loanAmount"
           id="loanAmount"
-          className="w-1/6 border p-1"
+          // className="w-1/6 border p-1"
           type="number"
           value={principal}
           onChange={(e) => setPrincipal(e.target.value)}
@@ -66,10 +69,10 @@ function EmiCalculator() {
         <label className="w-1/2 text-right pr-4" htmlFor="annualInterestRate">
           Annual Interest Rate (%):{" "}
         </label>
-        <input
-        aria-label="annualInterestRate"
+        <Input
+          aria-label="annualInterestRate"
           id="annualInterestRate"
-          className="w-1/6 border p-1"
+          // className="w-1/6 border p-1"
           type="number"
           value={annualRate}
           onChange={(e) => setAnnualRate(e.target.value)}
@@ -79,29 +82,27 @@ function EmiCalculator() {
         <label className="w-1/2 text-right pr-4" htmlFor="tenureYears">
           Tenure (Years):{" "}
         </label>
-        <input
-        aria-label="tenureYears"
+        <Input
+          aria-label="tenureYears"
           id="tenureYears"
-          className="w-1/6 border p-1"
+          // className="w-1/6 border p-1"
           type="number"
           value={tenureYears}
           onChange={(e) => setTenureYears(e.target.value)}
         />
       </div>
       <div>
-        <button
-          className="bg-blue-500 hover:bg-blue-900 p-1  rounded text-white mt-4"
+        <Button
+          shape="rounded"
+          variant="hover"
           onClick={calculateEMI}
         >
           Calculate EMI
-        </button>
+        </Button>
         &nbsp;&nbsp;
-        <button
-          className="bg-blue-500 hover:bg-blue-900 p-1 rounded text-white mt-4"
-          onClick={resetEMI}
-        >
+        <Button shape="rounded" variant="hover" onClick={resetEMI}>
           Reset EMI
-        </button>
+        </Button>
       </div>
       {isOpenEmiResultComponent && (
         <EMIResult
