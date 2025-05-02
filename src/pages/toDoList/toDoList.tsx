@@ -55,7 +55,7 @@ function ToDoList() {
           />
           <div className="ml-5">
             <div>
-              <strong>Project Name:</strong> {item.projectName}
+              <strong>Project Namess:</strong> {item.projectName}
             </div>
             <div>
               <strong>Task:</strong> {item.task}
