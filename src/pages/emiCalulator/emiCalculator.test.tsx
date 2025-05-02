@@ -38,7 +38,7 @@ test("allows user to input values and calculates EMI", () => {
   expect(screen.getByText(/Result/i)).toBeInTheDocument();
 });
 test("clears all input fields", async () => {
-  render(<EmiCalculator />);
+  render(<EmiCalculator />);     
 
   const principalInput = screen.getByLabelText(/Loan Amount/i);
   const interestInput = screen.getByLabelText(/Annual Interest Rate/i);
